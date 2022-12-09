@@ -9,9 +9,10 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent implements OnInit {
   private user: User = {
-    name: 'Leanne Graham',
-    username: 'Bret',
-    email: 'Sincere@april.biz',
+    id: 5,
+    name: 'Junior Graham',
+    username: 'Junior',
+    email: 'juni-grahamor@april.biz',
     address: {
       street: 'Kulas Light',
       suite: 'Apt. 556',
@@ -36,7 +37,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.onGetUsers();
     // this.onGetUser();
-    this.onCreateUser();
+    // this.onCreateUser();
+    this.onUpdateUser();
   }
 
   onGetUsers(): void {
@@ -63,6 +65,15 @@ export class AppComponent implements OnInit {
         (response) => console.log(response),
         (error) => console.log(error),
         () => console.log('Done Creating user')
+      );
+  }
+
+  onUpdateUser(): void {
+    this.userService.updateUser(this.user)
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error),
+        () => console.log('Done Updating user')
       );
   }
 }
