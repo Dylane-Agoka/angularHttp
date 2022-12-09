@@ -19,8 +19,9 @@ export class AppComponent implements OnInit {
     this.onGetUsers();
     // this.onGetUser();
     // this.onCreateUser();
-    this.onUpdateUser();
+    // this.onUpdateUser();
     this.onPatchUser();
+    this.onDeleteUser();
   }
 
   onGetUsers(): void {
@@ -65,6 +66,15 @@ export class AppComponent implements OnInit {
         (response) => console.log(response),
         (error) => console.log(error),
         () => console.log('Done Patching user')
+      );
+  }
+
+  onDeleteUser(): void {
+    this.userService.deleteUser(this.user.id as number)
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error),
+        () => console.log('Done Deleting user')
       );
   }
 }
