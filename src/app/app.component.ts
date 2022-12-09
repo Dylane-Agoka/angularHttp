@@ -10,26 +10,7 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit {
   private user: User = {
     id: 5,
-    name: 'Junior Graham',
-    username: 'Junior',
-    email: 'juni-grahamor@april.biz',
-    address: {
-      street: 'Kulas Light',
-      suite: 'Apt. 556',
-      city: 'Gwenborough',
-      zipcode: '92998-3874',
-      geo: {
-        lat: '-37.3159',
-        lng: '81.1496'
-      }
-    },
-    phone: '1-770-736-8031 x56442',
-    website: 'hildegard.org',
-    company: {
-      name: 'Romaguera-Crona',
-      catchPhrase: 'Multi-layered client-server neural-net',
-      bs: 'harness real-time e-markets'
-    }
+    name: 'Junior Graham'
   };
 
   constructor(private userService: UserService) {}
@@ -39,6 +20,7 @@ export class AppComponent implements OnInit {
     // this.onGetUser();
     // this.onCreateUser();
     this.onUpdateUser();
+    this.onPatchUser();
   }
 
   onGetUsers(): void {
@@ -74,6 +56,15 @@ export class AppComponent implements OnInit {
         (response) => console.log(response),
         (error) => console.log(error),
         () => console.log('Done Updating user')
+      );
+  }
+
+  onPatchUser(): void {
+    this.userService.patchUser(this.user)
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error),
+        () => console.log('Done Patching user')
       );
   }
 }
