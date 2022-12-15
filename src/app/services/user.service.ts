@@ -15,6 +15,7 @@ export class UserService {
   getUsers(): Observable<User[]> {
     let myHeaders = new HttpHeaders({'myHeader': 'headerValue'});
     myHeaders = myHeaders.set('id', '1234');
+    myHeaders = myHeaders.append('id', '0000');
     return this.http.get<User[]>(`${this.apiUrl}/users`, { headers: myHeaders });
   }
 
