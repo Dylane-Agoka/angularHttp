@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
   onDeleteUser(): void {
     this.userService.deleteUser(this.user.id as number)
       .subscribe(
-        (response) => console.log(response),
+        (response) => console.log('Response from delete: ', response),
         (error) => console.log(error),
         () => console.log('Done Deleting user')
       );
