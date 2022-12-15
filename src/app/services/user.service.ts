@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    let myHeaders = new HttpHeaders({'myHeader': 'headerValue'});
+    let myHeaders = new HttpHeaders({'myHeader': ['headerValue1', 'headerValue2']});
     myHeaders = myHeaders.set('id', '1234');
     myHeaders = myHeaders.append('id', '0000');
     return this.http.get<User[]>(`${this.apiUrl}/users`, { headers: myHeaders });
